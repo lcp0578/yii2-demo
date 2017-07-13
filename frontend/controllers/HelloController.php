@@ -48,6 +48,7 @@ class HelloController extends Controller
 
     public function actionHomePage()
     {
+        Yii::trace("trace-test");
         return $this->render('home-page');
     }
 }
