@@ -8,11 +8,11 @@ class HelloController extends Controller
 {
     // set default action
     public $defaultAction = 'home-page';
+
     /**
      * (non-PHPdoc)
-     * @see \yii\base\Controller::actions()
      * 
-     * 设置独立的动作
+     * @see \yii\base\Controller::actions() 设置独立的动作
      */
     public function actions()
     {
@@ -24,11 +24,28 @@ class HelloController extends Controller
             ]
         ];
     }
+
+    /**
+     */
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => 'frontend\components\ActionTimeFilter',
+                'only' => [
+                    'index',
+                    'home-page'
+                ]
+            ]
+        ]
+        ;
+    }
+
     public function actionIndex()
     {
         return $this->render('index');
     }
-    
+
     public function actionHomePage()
     {
         return $this->render('home-page');
