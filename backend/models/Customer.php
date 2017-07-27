@@ -55,4 +55,25 @@ class Customer extends \yii\db\ActiveRecord
     {
         return new CustomerQuery(get_called_class());
     }
+    
+    public function getOrdersTest()
+    {
+        return $this->hasMany(OrderTest::className(), [
+            'customer_id' => 'id'
+        ]);
+    }
+    
+    public function getBigOrders($total = 100)
+    {
+        return $this->hasMany(Order::className(), [
+            'customer_id' => 'id'
+        ])->where('subtotal > :total', [
+            ':total' => $total
+        ])->orderBy('id');
+    }
+    
+    public static function getGoodOrder()
+    {
+        return self::find()->with('ordersTest')->asArray()->all();
+    }
 }

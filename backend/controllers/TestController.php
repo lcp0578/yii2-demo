@@ -26,11 +26,17 @@ class TestController extends Controller
      */
     public function actionIndex()
     {
-        $customers = Customer::find()
-            ->asArray()
-            ->all();
+//         $customers = Customer::find()
+//             ->asArray()
+//             ->all();
+//         $customers = Customer::findOne(1);
+//         $orders = $customers->orders;
+//         $customer = Customer::findOne(1);
+//         $orders = $customer->getBigOrders(250)->asArray()->all();
+        //$customers = Customer::find()->with('orders')->asArray()->all();
+        $customers = Customer::getGoodOrder();
         return $this->render('index', [
-            'customers' => $customers
+            'data' => $customers
         ]);
     }
 }

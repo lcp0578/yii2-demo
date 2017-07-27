@@ -1,3 +1,3 @@
 <?php
 echo '<pre>';
-print_r($customers);
+print_r($data);
